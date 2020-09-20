@@ -1,0 +1,6 @@
+<h1>Offices in <%=@building.name%></h1>
+    <% @building.offices.each do |office| %>
+        <%=link_to office.company.name, company_path(office.company) %>
+        (Floor <%= office.floor %>)
+        <br>
+    <% end %>
