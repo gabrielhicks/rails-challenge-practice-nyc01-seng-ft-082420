@@ -1,5 +1,5 @@
 <%= render "navbar" %>
-<h1><%=@company.name%></h1><br>
+<h1 class="text-center"><%=@company.name%></h1><br>
     <% @company.employees.each do |employee| %>
-        <%= employee.name %><br>
+        <p class="text-center"><%= employee.name %></p><br>
     <% end %>

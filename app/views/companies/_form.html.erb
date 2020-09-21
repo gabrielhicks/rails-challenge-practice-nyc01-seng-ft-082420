@@ -1,3 +1,5 @@
+<div class="card">
+<div class="card-body">
 <%= form_for @company do |f| %>
 	<ul>
 		<% if @company.errors.any? %>
@@ -6,22 +8,27 @@
 			<% end %>
 		<% end %>
 	</ul>
-
-<h4>Company Details</h4>
+<div class="card-header">Company Details</div>
 	<br>
+	<div class="card-body">
+	<div class="card-text">
 	<%= f.label :name %><br>
 	<%= f.text_field :name %><br><br>
-
-<h4>Building Floors Available</h4>
+	</div>
 	<% Building.all.each do |b| %>
 		<%= f.fields_for :offices, b do |b_field| %>
 			<%= b_field.hidden_field :id %>
-			<%= b_field.label b.name %> Building<br>
-			<%= b_field.collection_check_boxes :offices, b.empty_offices, :floor, :floor %><br><br>
+			<div class="card">
+			<p><%= b_field.label b.name %> building available floors:</p>
+				<div class="form-group">
+					<%= b_field.collection_radio_buttons :offices, b.empty_offices, :floor, :floor %>
+				</div>
+			</div>
 		<% end %>
 	<% end %>
 	<br>
-
-
 	<%= f.submit %>
+</div>
 <% end %>
+</div>
+</div>
